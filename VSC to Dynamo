@@ -1,0 +1,23 @@
+import clr
+clr.AddReference('RevitServices')
+from RevitServices.Persistence import DocumentManager
+clr.AddReference('RevitNodes')
+import Revit
+clr.ImportExtensions(Revit.Elements)
+clr.ImportExtensions(Revit.GeometryConversion)
+
+clr.AddReference('RevitAPI')
+from Autodesk.Revit import DB
+
+import sys
+sys.path += [
+    # r"C:\Program Files (x86)\IronPython 2.7\Lib", для 2019 - включить
+    IN[0].DirectoryName  # noqa
+]
+
+doc = DocumentManager.Instance.CurrentDBDocument
+uiapp = DocumentManager.Instance.CurrentUIApplication
+app = uiapp.Application
+uidoc = uiapp.ActiveUIDocument
+
+OUT = clr.References
